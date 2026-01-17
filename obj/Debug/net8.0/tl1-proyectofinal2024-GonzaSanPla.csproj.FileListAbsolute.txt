@@ -57,3 +57,18 @@ C:\Users\Usuario\TP\tl1-proyectofinal2024-GonzaSanPla\obj\Debug\net8.0\refint\tl
 C:\Users\Usuario\TP\tl1-proyectofinal2024-GonzaSanPla\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.pdb
 C:\Users\Usuario\TP\tl1-proyectofinal2024-GonzaSanPla\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.genruntimeconfig.cache
 C:\Users\Usuario\TP\tl1-proyectofinal2024-GonzaSanPla\obj\Debug\net8.0\ref\tl1-proyectofinal2024-GonzaSanPla.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.exe
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.deps.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.runtimeconfig.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.pdb
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.AssemblyInfoInputs.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.AssemblyInfo.cs
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.sourcelink.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\refint\tl1-proyectofinal2024-GonzaSanPla.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.pdb
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\tl1-proyectofinal2024-GonzaSanPla.genruntimeconfig.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\ref\tl1-proyectofinal2024-GonzaSanPla.dll

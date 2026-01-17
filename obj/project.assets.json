@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\Gonzalo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\TP\\tl1-proyectofinal2024-GonzaSanPla\\tl1-proyectofinal2024-GonzaSanPla.csproj",
+      "projectUniqueName": "C:\\Users\\Gonzalo\\Taller de lenguajes 2\\King of the castle\\tl1-proyectofinal2024-GonzaSanPla.csproj",
       "projectName": "tl1-proyectofinal2024-GonzaSanPla",
-      "projectPath": "C:\\Users\\Usuario\\TP\\tl1-proyectofinal2024-GonzaSanPla\\tl1-proyectofinal2024-GonzaSanPla.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\TP\\tl1-proyectofinal2024-GonzaSanPla\\obj\\",
+      "projectPath": "C:\\Users\\Gonzalo\\Taller de lenguajes 2\\King of the castle\\tl1-proyectofinal2024-GonzaSanPla.csproj",
+      "packagesPath": "C:\\Users\\Gonzalo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gonzalo\\Taller de lenguajes 2\\King of the castle\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Gonzalo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

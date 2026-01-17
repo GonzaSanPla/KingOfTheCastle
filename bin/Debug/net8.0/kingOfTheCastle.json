@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "tl1-proyectofinal2024-GonzaSanPla/1.0.0": {
+      "kingOfTheCastle/1.0.0": {
         "runtime": {
-          "tl1-proyectofinal2024-GonzaSanPla.dll": {}
+          "kingOfTheCastle.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "tl1-proyectofinal2024-GonzaSanPla/1.0.0": {
+    "kingOfTheCastle/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
