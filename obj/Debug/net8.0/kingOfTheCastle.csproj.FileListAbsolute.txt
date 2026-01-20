@@ -1,0 +1,15 @@
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\kingOfTheCastle.exe
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\kingOfTheCastle.deps.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\kingOfTheCastle.runtimeconfig.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\kingOfTheCastle.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\bin\Debug\net8.0\kingOfTheCastle.pdb
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.AssemblyInfoInputs.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.AssemblyInfo.cs
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.sourcelink.json
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\refint\kingOfTheCastle.dll
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.pdb
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\kingOfTheCastle.genruntimeconfig.cache
+C:\Users\Gonzalo\Taller de lenguajes 2\King of the castle\obj\Debug\net8.0\ref\kingOfTheCastle.dll

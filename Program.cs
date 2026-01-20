@@ -3,6 +3,8 @@ using System.Collections;
 using System.Drawing;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using EspacioJugador;
+using EspacioEnemigo;
 using EspacioPersonajes;
 using EspacioRoot;
 
@@ -22,26 +24,26 @@ Colores y su signficado:
     Castillo    - DarkGray
 */
 
-Personajes Jugador;
-Personajes Enemigo;
+Jugador jugador;
+Enemigo enemigo;
 
 Inicio();
 do
 {
-    Jugador = FabricaDeJugador();
-    // Jugador.MostrarEstadisticas();
-    while (Jugador.EstaVivo() && !Jugador.Ganar())
+    jugador = FabricaDeJugador();
+    // jugador.MostrarEstadisticas();
+    while (jugador.EstaVivo() && !jugador.Ganar())
     {
-        MostrarOleada(Jugador);
-        Enemigo = await FabricaDeEnemigo();
-        Enemigo.PresentarEnemigo();
-        Jugador = Pelear(Jugador, Enemigo);
-        if (Jugador.EstaVivo())
+        MostrarOleada(jugador);
+        enemigo = await FabricaDeEnemigo();
+        enemigo.PresentarEnemigo();
+        jugador = Pelear(jugador, enemigo);
+        if (jugador.EstaVivo())
         {
-            Jugador.RecibirRecompensa(Enemigo.Raza);
+            jugador.RecibirRecompensa(enemigo.Raza);
         }
     }
-    Finalizar(Jugador);
+    Finalizar(jugador);
 } while (SegirJugando());
 
 static void Inicio()
@@ -55,7 +57,7 @@ static void Inicio()
     mostrar.ComoJuagar();
 }
 
-static Personajes FabricaDeJugador()
+static Jugador FabricaDeJugador()
 {
     string nombreJ;
     int raza;
@@ -71,20 +73,20 @@ static Personajes FabricaDeJugador()
     } while (nombreJ == "" || nombreJ.StartsWith(' ')||nombreJ.Length>12);
     raza = ElegirRaza();
 
-    Personajes pj = new Personajes(nombreJ, raza);
+    Jugador pj = new Jugador(nombreJ, raza);
     return pj;
 }
-static void MostrarOleada(Personajes Jugador)
+static void MostrarOleada(Jugador Jugador)
 {
     Mostrar most = new Mostrar();
     most.ProximaOleada();
     Jugador.MostrarOleada();
 }
-static async Task<Personajes> FabricaDeEnemigo()
+static async Task<Enemigo> FabricaDeEnemigo()
 {
     Random rand = new Random();
     Root info = await ObtenerRoot();
-    Personajes pj = new Personajes(info.Results[0].Name.First, rand.Next(1, 4));//Genera un numero al azar entre 1 y 3 
+    Enemigo pj = new Enemigo(info.Results[0].Name.First, rand.Next(1, 4));//Genera un numero al azar entre 1 y 3 
     return pj;
 }
 
@@ -157,59 +159,109 @@ static int ElegirRaza()
     return raza;
 }
 
-static Personajes Pelear(Personajes Jugador, Personajes Enemigo)
+static Jugador Pelear(Jugador jugador, Enemigo enemigo)
 {
     PersonajesEnCombate ConjuntoDePersonaje = new PersonajesEnCombate();
     int opcion;
     do
     {
-        Jugador.MostrarVida();
-        Enemigo.MostrarVida();
-        opcion = ElegirOpcion(Jugador);          // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
-        if (Enemigo.Raza >= Jugador.Raza)          //Para elegir quien ataca primero me baso en su raza siendo Hada>Centauro>Ogro y si son de la misma raza va primero el jugador
+        jugador.MostrarVida();
+        enemigo.MostrarVida();
+        opcion = ElegirOpcion(jugador);          // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
+        if (enemigo.Raza >= jugador.Raza)          //Para elegir quien ataca primero me baso en su raza siendo Hada>Centauro>Ogro y si son de la misma raza va primero el jugador
         {
             Console.WriteLine("\n");
-            ConjuntoDePersonaje.Atacante = Jugador;                                    //Este bloque es para realizar la accion del jugador
-            ConjuntoDePersonaje.Defensor = Enemigo;
-            ConjuntoDePersonaje = RealizarMovimiento(ConjuntoDePersonaje, opcion);
-            Jugador = ConjuntoDePersonaje.Atacante;
-            Enemigo = ConjuntoDePersonaje.Defensor;
-            if (Enemigo.EstaVivo())
+            //Este bloque es para realizar la accion del jugador
+            switch (opcion)
+            {
+                case 1:
+                    enemigo.PerderVida(Atacar(jugador, enemigo));
+                    if (jugador.EstaContrado())
+                    {
+                        jugador.Desoncentar();
+                    }
+                    break;
+                case 2:
+                    jugador.Concentar();
+                    break;
+                case 3:
+                    jugador.UtilizarPocion();
+                    if (jugador.EstaContrado())
+                    {
+                        jugador.Desoncentar();
+                    }
+                    break;
+            }
+            if (enemigo.EstaVivo())
             {
                 Console.WriteLine("\n");
-                ConjuntoDePersonaje.Atacante = Enemigo;                                    //Este bloque es para realizar la accion del enemigo
-                ConjuntoDePersonaje.Defensor = Jugador;
-                ConjuntoDePersonaje = RealizarMovimiento(ConjuntoDePersonaje, Enemigo.ElegirMovimiento());
-                Enemigo = ConjuntoDePersonaje.Atacante;
-                Jugador = ConjuntoDePersonaje.Defensor;
+                //Este bloque es para realizar la accion del enemigo 
+                switch (enemigo.ElegirMovimiento())
+                {
+                case 1:
+                    jugador.PerderVida(Atacar(enemigo, jugador));
+                    if (enemigo.EstaContrado())
+                    {
+                        enemigo.Desoncentar();
+                    }
+                    break;
+                case 2:
+                    enemigo.Concentar();
+                    break;    
+                }
             }
-        }
-        else
+        
+        }else
         {
             Console.WriteLine("\n");
-            ConjuntoDePersonaje.Atacante = Enemigo;                                    //Este bloque es para realizar la accion del enemigo
-            ConjuntoDePersonaje.Defensor = Jugador;
-            ConjuntoDePersonaje = RealizarMovimiento(ConjuntoDePersonaje, Enemigo.ElegirMovimiento());
-            Enemigo = ConjuntoDePersonaje.Atacante;
-            Jugador = ConjuntoDePersonaje.Defensor;
-            if (Jugador.EstaVivo())
+            //Este bloque es para realizar la accion del enemigo 
+            switch (enemigo.ElegirMovimiento())
+            {
+                case 1:
+                    jugador.PerderVida(Atacar(enemigo, jugador));
+                    if (enemigo.EstaContrado())
+                    {
+                        enemigo.Desoncentar();
+                    }
+                    break;
+                case 2:
+                    enemigo.Concentar();
+                    break;    
+            }
+            if (jugador.EstaVivo())
             {
                 Console.WriteLine("\n");
-                ConjuntoDePersonaje.Atacante = Jugador;                                    //Este bloque es para realizar la accion del jugador
-                ConjuntoDePersonaje.Defensor = Enemigo;
-                ConjuntoDePersonaje = RealizarMovimiento(ConjuntoDePersonaje, opcion);
-                Jugador = ConjuntoDePersonaje.Atacante;
-                Enemigo = ConjuntoDePersonaje.Defensor;
+                //Este bloque es para realizar la accion del jugador
+                switch (opcion)
+                {
+                case 1:
+                    enemigo.PerderVida(Atacar(jugador, enemigo));
+                    if (jugador.EstaContrado())
+                    {
+                        jugador.Desoncentar();
+                    }
+                    break;
+                case 2:
+                    jugador.Concentar();
+                    break;
+                case 3:
+                    jugador.UtilizarPocion();
+                    if (jugador.EstaContrado())
+                    {
+                        jugador.Desoncentar();
+                    }
+                    break;
+                }
             }
         }
-    } while (Jugador.EstaVivo() && Enemigo.EstaVivo());
-    if (Jugador.EstaVivo())
+    } while (jugador.EstaVivo() && enemigo.EstaVivo());
+    if (jugador.EstaVivo())
     {
-        Console.WriteLine("Has derrotado a " + Enemigo.Nombre);
-        Jugador.AumentarOleada();
+        Console.WriteLine("Has derrotado a " + enemigo.Nombre);
+        jugador.AumentarOleada();
     }
 
-    return Jugador;
+    return jugador;
 }
 
 static int ElegirOpcion(Personajes Jugador)        // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
@@ -233,19 +285,18 @@ static int ElegirOpcion(Personajes Jugador)        // Regresa un string con 1 pa
     return opcion;
 }
 
-static Personajes Atacar(Personajes Atacante, Personajes Defensor)
+static int Atacar(Personajes Atacante, Personajes Defensor)
 {
     Random rand = new Random();
-    int danioRealizado, varConcentracion;
+    int danioRealizado=0, varConcentracion;
     if (!Defensor.LoEsquiva(rand.Next(1, 101)))                    //Para que sean numeros entre el 1 y el 100 
     {
         varConcentracion = VariableDeConcentracionParaCalcularDanio(Atacante, Defensor);
         danioRealizado = Atacante.Ataque * 15 * varConcentracion / Defensor.Defensa;     //15 es una variable de balanceo
-        Defensor.PerderVida(danioRealizado);
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(Atacante.Nombre + " ha realizado " + danioRealizado + " puntos de daño a " + Defensor.Nombre);
     }
-    return Defensor;
+    return danioRealizado;
 }
 
 static int VariableDeConcentracionParaCalcularDanio(Personajes Atacante, Personajes Defensor)       //Retorna 2 si estan neutro,4 si solo el atacante y 1 si solo el defensor
@@ -269,33 +320,33 @@ static int VariableDeConcentracionParaCalcularDanio(Personajes Atacante, Persona
 
 }
 
-static PersonajesEnCombate RealizarMovimiento(PersonajesEnCombate ConjuntoDePersonaje, int opcion)
-{
+// static (Personajes,Personajes) RealizarMovimiento(Personajes Atacante,Personajes Defensor, int opcion)
+// {
 
-    switch (opcion)
-    {
-        case 1:
-            ConjuntoDePersonaje.Defensor = Atacar(ConjuntoDePersonaje.Atacante, ConjuntoDePersonaje.Defensor);
-            if (ConjuntoDePersonaje.Atacante.EstaContrado())
-            {
-                ConjuntoDePersonaje.Atacante.Desoncentar();
-            }
-            break;
-        case 2:
-            ConjuntoDePersonaje.Atacante.Concentar();
-            break;
-        case 3:
-            ConjuntoDePersonaje.Atacante.UtilizarPocion();
-            if (ConjuntoDePersonaje.Atacante.EstaContrado())
-            {
-                ConjuntoDePersonaje.Atacante.Desoncentar();
-            }
-            break;
-    }
-    return ConjuntoDePersonaje;
-}
+//     switch (opcion)
+//     {
+//         case 1:
+//             Defensor = Atacar(Atacante, Defensor);
+//             if (Atacante.EstaContrado())
+//             {
+//                 Atacante.Desoncentar();
+//             }
+//             break;
+//         case 2:
+//             Atacante.Concentar();
+//             break;
+//         case 3:
+//             Atacante.UtilizarPocion();
+//             if (Atacante.EstaContrado())
+//             {
+//                 Atacante.Desoncentar();
+//             }
+//             break;
+//     }
+//     return (Atacante,Defensor);
+// }
 
-static void Finalizar(Personajes Jugador)
+static void Finalizar(Jugador Jugador)
 {
     Mostrar most = new Mostrar();
 
@@ -314,7 +365,7 @@ static void Finalizar(Personajes Jugador)
     MostrarRanking(HistorialJugadores(Jugador));
 }
 
-static List<Personajes> HistorialJugadores(Personajes Jugador)
+static List<Jugador> HistorialJugadores(Jugador Jugador)
 {
     string listaJugadoresSerializado;
     string NombreDelArchivo = "Historial del jugadores";
@@ -322,7 +373,7 @@ static List<Personajes> HistorialJugadores(Personajes Jugador)
 
     if(!File.Exists(NombreDelArchivo))
     {
-        List<Personajes> listaJugadores= new List<Personajes>();
+        List<Jugador> listaJugadores= new List<Jugador>();
         listaJugadores.Add(Jugador);
 
         listaJugadoresSerializado=JsonSerializer.Serialize(listaJugadores);
@@ -333,7 +384,7 @@ static List<Personajes> HistorialJugadores(Personajes Jugador)
     {
 
         listaJugadoresSerializado=helper.AbrirArchivoTexto(NombreDelArchivo);
-        var listaJugadores= JsonSerializer.Deserialize<List<Personajes>>(listaJugadoresSerializado);
+        var listaJugadores= JsonSerializer.Deserialize<List<Jugador>>(listaJugadoresSerializado);
 
         listaJugadores.Add(Jugador);
         listaJugadoresSerializado=JsonSerializer.Serialize(listaJugadores);
@@ -345,7 +396,7 @@ static List<Personajes> HistorialJugadores(Personajes Jugador)
     
 }
 
-static void MostrarRanking(List<Personajes> listaJugadores)
+static void MostrarRanking(List<Jugador> listaJugadores)
 { 
     int oleada=10;
     int ranking=1;
@@ -354,20 +405,20 @@ static void MostrarRanking(List<Personajes> listaJugadores)
     Console.WriteLine("\nRanking   Oleada   Nombre");
     while(oleada>0)
     {
-        foreach(Personajes jugdor in listaJugadores)
+        foreach(Jugador jugador in listaJugadores)
         {
-            if(oleada==jugdor.Oleada)
+            if(oleada==jugador.Oleada)
             {
-                if(ranking<10)
+                if(ranking<10) //diferencio si es menor de 10 para que quede alineado 
                 {
                     if(oleada==10)
                     {
                         Console.ForegroundColor=ConsoleColor.Yellow;
-                        Console.WriteLine(ranking+"         "+oleada+"       "+jugdor.Nombre);
+                        Console.WriteLine(ranking+"         "+oleada+"       "+jugador.Nombre);
                     }else
                     {
                         Console.ForegroundColor=ConsoleColor.White;
-                        Console.WriteLine(ranking+"         "+oleada+"        "+jugdor.Nombre);
+                        Console.WriteLine(ranking+"         "+oleada+"        "+jugador.Nombre);
                     }
                 }
                 else
@@ -375,11 +426,11 @@ static void MostrarRanking(List<Personajes> listaJugadores)
                     if(oleada==10)
                     {
                         Console.ForegroundColor=ConsoleColor.Yellow;
-                        Console.WriteLine(ranking+"        "+oleada+"         "+jugdor.Nombre);
+                        Console.WriteLine(ranking+"        "+oleada+"         "+jugador.Nombre);
                     }else
                     {
                         Console.ForegroundColor=ConsoleColor.White;
-                        Console.WriteLine(ranking+"        "+oleada+"        "+jugdor.Nombre);
+                        Console.WriteLine(ranking+"        "+oleada+"        "+jugador.Nombre);
                     }
                 }
                 ranking++;
