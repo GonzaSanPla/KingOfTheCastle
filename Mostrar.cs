@@ -99,15 +99,17 @@ public class Mostrar
     }
     public void Corona()
     {
-        Console.ForegroundColor=ConsoleColor.DarkYellow;    
+        Console.ForegroundColor=ConsoleColor.DarkYellow;
+        Console.WriteLine("\n\n");    
         Console.WriteLine("        __  __   ___   __  __ ");
         Console.WriteLine("        \\*) \\*)  \\*/  (*/ (*/");
         Console.WriteLine("         \\*\\_\\*\\_|O|_/*/_/*/");
         Console.WriteLine("          \\_______________/");
     }
-    public void Fasllaste()
+    public void Fallaste()
     {
         Console.ForegroundColor=ConsoleColor.Red;
+        Console.WriteLine("\n\n");
         Console.WriteLine("░▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░      ░▒▓█▓▒░       ░▒▓██████▓▒░ ░▒▓███████▓▒░▒▓████████▓▒░▒▓████████▓▒░ ");
         Console.WriteLine("░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░        ");
         Console.WriteLine("░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░       ");
@@ -180,6 +182,7 @@ public class Mostrar
     public void ProximaOleada()
     {
         Console.ForegroundColor=ConsoleColor.DarkYellow;
+        Console.WriteLine("\n\n\n");
         Console.WriteLine(" _____               _                         _                _       ");
         Console.WriteLine("|  __ \\             (_)                       | |              | |      ");
         Console.WriteLine("| |__) | __ _____  ___ _ __ ___   __ _    ___ | | ___  __ _  __| | __ _ ");
@@ -210,6 +213,43 @@ public class Mostrar
         Console.WriteLine("                ███       ███    ███     ███    ███      ███    ███   ███    ███    ▄█    ███     ███     ███▌    ▄   ███    ███");
         Console.WriteLine("               ▄████▀     ███    █▀      ██████████      ████████▀    ███    █▀   ▄████████▀     ▄████▀   █████▄▄██   ██████████");
         Console.WriteLine("\n\n");
+    }
+    public void Turno()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n");
+        Console.WriteLine("  _____ ");       
+        Console.WriteLine(" |_   _|   _ _ __ _ __   ___ ");
+        Console.WriteLine("   | || | | | '__| '_ \\ / _ \\   ");
+        Console.WriteLine("   | || |_| | |  | | | | (_) | ");
+        Console.WriteLine("   |_| \\__,_|_|  |_| |_|\\___/  ");
+        Console.WriteLine("");
+
+    }
+    public void Movimientos()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n");
+        Console.WriteLine("  __  __            _           _            _            ");       
+        Console.WriteLine(" |  \\/  | _____   _(_)_ __ ___ (_) ___ _ __ | |_ ___  ___ ");
+        Console.WriteLine(" | |\\/| |/ _ \\ \\ / / | '_ ` _ \\| |/ _ \\ '_ \\| __/ _ \\/ __|");
+        Console.WriteLine(" | |  | | (_) \\ V /| | | | | | | |  __/ | | | || (_) \\__ \\");
+        Console.WriteLine(" |_|  |_|\\___/ \\_/ |_|_| |_| |_|_|\\___|_| |_|\\__\\___/|___/");
+        Console.WriteLine("");
+
+    }
+    public void Mejora()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n");    
+        Console.WriteLine("     /\\     __  __       _                            /\\  ");
+        Console.WriteLine("    /  \\   |  \\/  | ___ (_)_ __ ___  _ __ __ _       /  \\ ");
+        Console.WriteLine("   /____\\  | |\\/| |/ _ \\| | '__/ _ \\| '__/ _` |     /____\\");
+        Console.WriteLine("     ||    | |  | |  __/| | | | (_) | | | (_| |       ||     ");
+        Console.WriteLine("     ||    |_|  |_|\\___|/ |_|  \\___/|_|  \\__,_|       ||     ");
+        Console.WriteLine("     ||               |__/                            ||     ");
+        Console.WriteLine("");
+
     }
 }
 /*
@@ -533,4 +573,24 @@ $$ | \$$\ $$ |$$ |  $$ |\$$$$$$$ |      \$$$$$$  |$$ |              \$$$$  |$$ |
                       J  |     .-'     
                        \ |  .-'    
                        |-'       
+
+  _____                        
+ |_   _|   _ _ __ _ __   ___   
+   | || | | | '__| '_ \ / _ \  
+   | || |_| | |  | | | | (_) | 
+   |_| \__,_|_|  |_| |_|\___/  
+
+  __  __            _           _            _            
+ |  \/  | _____   _(_)_ __ ___ (_) ___ _ __ | |_ ___  ___ 
+ | |\/| |/ _ \ \ / / | '_ ` _ \| |/ _ \ '_ \| __/ _ \/ __|
+ | |  | | (_) \ V /| | | | | | | |  __/ | | | || (_) \__ \
+ |_|  |_|\___/ \_/ |_|_| |_| |_|_|\___|_| |_|\__\___/|___/
+
+  __  __       _                     
+ |  \/  | ___ (_)_ __ ___  _ __ __ _ 
+ | |\/| |/ _ \| | '__/ _ \| '__/ _` |
+ | |  | |  __/| | | | (_) | | | (_| |
+ |_|  |_|\___|/ |_|  \___/|_|  \__,_|
+            |__/                     
+                                                                            
 */

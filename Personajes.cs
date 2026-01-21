@@ -126,13 +126,13 @@ public class Personajes
     {
         Concentrado=true;
         Console.ForegroundColor=ConsoleColor.Blue;
-        Console.WriteLine("\n"+Nombre+" se ha concentrado");
+        Console.WriteLine(Nombre+" se ha concentrado");
     }
     public void Desoncentar()
     {
         Concentrado=false;
         Console.ForegroundColor=ConsoleColor.Blue;
-        Console.WriteLine("\n"+Nombre+" se ha desconcentrado");
+        Console.WriteLine(Nombre+" se ha desconcentrado");
     }
     public bool EstaContrado()
     {
@@ -194,10 +194,3 @@ public class Personajes
     // protected int Oleada { get => oleada; set => oleada = value; }
 } 
 
-
-public class PersonajesEnCombate()      //Esto variable la creo para poder utlizar una funcion que me modifique y retone a ambos
-{
-     public Personajes Atacante;
-     public Personajes Defensor;
-
-}

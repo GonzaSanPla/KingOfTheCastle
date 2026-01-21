@@ -120,12 +120,15 @@ static int ElegirRaza()
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("\nHada: Fragil pero gracias su diminuta altura y alta velocidad puede evitar muchos golpes");
     most.Hada();
+    Pausa();
     Console.ForegroundColor = ConsoleColor.DarkCyan;
     Console.WriteLine("\nCentauro: Logra aguantar unos cuantes golpes y con cierta agilidad se mueve evitando algunos ataques");
     most.Centauro();
+    Pausa();
     Console.ForegroundColor = ConsoleColor.DarkGreen;
     Console.WriteLine("\nOgro: Debido a su gran tamanio se le complica movese velozmente lo cual queda extramadamente vulnerable a los golpes enemigos. Pero lo compensa con su gran capacidad de recibir golpes");
     most.Ogro();
+    Pausa();
     do
     {
         Console.ForegroundColor = ConsoleColor.White;
@@ -161,13 +164,15 @@ static int ElegirRaza()
 
 static Jugador Pelear(Jugador jugador, Enemigo enemigo)
 {
-    PersonajesEnCombate ConjuntoDePersonaje = new PersonajesEnCombate();
+    Mostrar  mostrar = new Mostrar();
     int opcion;
     do
     {
+        mostrar.Turno();
         jugador.MostrarVida();
         enemigo.MostrarVida();
         opcion = ElegirOpcion(jugador);          // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
+        mostrar.Movimientos();
         if (enemigo.Raza >= jugador.Raza)          //Para elegir quien ataca primero me baso en su raza siendo Hada>Centauro>Ogro y si son de la misma raza va primero el jugador
         {
             Console.WriteLine("\n");
@@ -359,7 +364,7 @@ static void Finalizar(Jugador Jugador)
     else
     {
     
-        most.Fasllaste();
+        most.Fallaste();
         Jugador.MostrarOleadaFinal();
     }
     MostrarRanking(HistorialJugadores(Jugador));

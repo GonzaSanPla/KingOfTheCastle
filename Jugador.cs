@@ -16,6 +16,8 @@ public class Jugador : Personajes
 
      public void RecibirRecompensa(int razaEnemiga)
     {
+        Mostrar mostrar = new Mostrar();
+        mostrar.Mejora();
         switch(razaEnemiga)
         {
             case 1:
