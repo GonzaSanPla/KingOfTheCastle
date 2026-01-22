@@ -93,24 +93,41 @@ static async Task<Enemigo> FabricaDeEnemigo()
 static async Task<string> ObtenerRoot()
 {
     var url = "https://randomuser.me/api/";
+    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
     try
     {
         HttpClient client = new HttpClient();
-        HttpResponseMessage response = await client.GetAsync(url);
+        HttpResponseMessage response = await client.GetAsync(url,cts.Token);
         response.EnsureSuccessStatusCode();
         string responseBody = await response.Content.ReadAsStringAsync();
         Root infoBas = JsonSerializer.Deserialize<Root>(responseBody);
         return infoBas.Results[0].Name.First;
+    }
+    catch(OperationCanceledException)
+    {
+        return NombreAlAzar();
     }
     catch (HttpRequestException e)
     {
         Console.WriteLine("Problemas de acceso a la API");
         Console.WriteLine("Message :{0} ", e.Message);
         
-        return null;
+        return NombreAlAzar();
     }
 }
 
+static string NombreAlAzar()
+{
+    string listaNombresSerializado;
+    string NombreDelArchivo = "Listado de nombres";
+    var helper = new HelperDeJson();
+    Random rand = new Random();
+
+    listaNombresSerializado=helper.AbrirArchivoTexto(NombreDelArchivo);
+    var listaNombres= JsonSerializer.Deserialize<List<string>>(listaNombresSerializado);
+    
+    return listaNombres[rand.Next(1, 101)];
+}
 static int ElegirRaza()
 {
     bool condiciones;
