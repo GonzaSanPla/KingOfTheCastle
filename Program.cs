@@ -269,7 +269,7 @@ static Jugador Pelear(Jugador jugador, Enemigo enemigo)
     return jugador;
 }
 
-static int ElegirOpcion(Personajes Jugador)        // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
+static int ElegirOpcion(Personajes jugador)        // Regresa un string con 1 para atacar, 2 para defender y 3 para usar pocion
 {
     int opcion;
     string strOpcion;
@@ -282,9 +282,14 @@ static int ElegirOpcion(Personajes Jugador)        // Regresa un string con 1 pa
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine(" 2-Concentrar");
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine(" 3-Tomar pocion(Pociones restantes:" + Jugador.Pociones + ")");
+        Console.WriteLine(" 3-Tomar pocion(Pociones restantes:" + jugador.Pociones + ")");
         Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine(" 4-Mostrar estdísticas");
         strOpcion = Console.ReadLine();
+        if(strOpcion == "4")
+        {
+            jugador.MostrarEstadisticas();
+        }
     } while (strOpcion != "1" && strOpcion != "2" && strOpcion != "3");
     int.TryParse(strOpcion, out opcion);
     return opcion;
@@ -446,10 +451,9 @@ static void MostrarRanking(List<Jugador> listaJugadores)
 }
 static void Pausa()
 {
-    string basura;
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("Presione enter para continuar.");
-    basura = Console.ReadLine();
+    Console.WriteLine("Presione cualquier tecla para continuar");
+    Console.ReadKey(true);
 }
 
 static bool SegirJugando()

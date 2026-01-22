@@ -68,7 +68,7 @@ public class Personajes
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("\nEstadisticas:");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("   vidaActual:"+vidaActual);
+        Console.WriteLine("   Vida actual:"+vidaActual);
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("   Ataque:"+Ataque);
         Console.ForegroundColor = ConsoleColor.DarkBlue;
