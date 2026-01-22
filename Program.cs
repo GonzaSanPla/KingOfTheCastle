@@ -85,12 +85,12 @@ static void MostrarOleada(Jugador Jugador)
 static async Task<Enemigo> FabricaDeEnemigo()
 {
     Random rand = new Random();
-    Root info = await ObtenerRoot();
-    Enemigo pj = new Enemigo(info.Results[0].Name.First, rand.Next(1, 4));//Genera un numero al azar entre 1 y 3 
+    string nombre = await ObtenerRoot();
+    Enemigo pj = new Enemigo(nombre, rand.Next(1, 4));//Genera un numero al azar entre 1 y 3 
     return pj;
 }
 
-static async Task<Root> ObtenerRoot()
+static async Task<string> ObtenerRoot()
 {
     var url = "https://randomuser.me/api/";
     try
@@ -100,12 +100,13 @@ static async Task<Root> ObtenerRoot()
         response.EnsureSuccessStatusCode();
         string responseBody = await response.Content.ReadAsStringAsync();
         Root infoBas = JsonSerializer.Deserialize<Root>(responseBody);
-        return infoBas;
+        return infoBas.Results[0].Name.First;
     }
     catch (HttpRequestException e)
     {
         Console.WriteLine("Problemas de acceso a la API");
         Console.WriteLine("Message :{0} ", e.Message);
+        
         return null;
     }
 }

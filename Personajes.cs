@@ -7,17 +7,17 @@ namespace EspacioPersonajes;
 
 public class Personajes
 {
-     
-    protected string nombre;
 
-    protected float vidaActual;
-    protected float vidaMaxima;
-    protected int ataque;
-    protected int evasion;
-    protected int defensa;
-    protected int pociones;
-    protected int raza; // 1- Hada 2-Centauro 3- Ogro
-    protected bool concentrado;
+    private string nombre;
+
+    private float vidaActual;
+    private float vidaMaxima;
+    private int ataque;
+    private int evasion;
+    private int defensa;
+    private int pociones;
+    private int raza; // 1- Hada 2-Centauro 3- Ogro
+    private bool concentrado1;
     // private int movimiento;//Esta es una varible unicamente para que el enemigo elija movimiento 
     // private int oleada;
 
@@ -27,36 +27,36 @@ public class Personajes
     }
     public Personajes(string NombreIngresado, int numRaza)
     {
-        nombre= NombreIngresado; 
-        pociones=3;
+        Nombre= NombreIngresado; 
+        Pociones=3;
         Concentrado=false;
         // Movimiento=1;
         // Oleada=1;
         switch(numRaza)
         {
             case 1:                    
-                raza= numRaza;
-                vidaMaxima=75;
-                vidaActual=75;
-                ataque=25;
-                evasion=50;
-                defensa=25;
+                Raza= numRaza;
+                VidaMaxima=75;
+                VidaActual=75;
+                Ataque=25;
+                Evasion=50;
+                Defensa=25;
                 break;
             case 2:
-                raza=numRaza;
-                vidaMaxima=100;
-                vidaActual=100;
-                ataque=25;
-                evasion=25;
-                defensa=30;
+                Raza=numRaza;
+                VidaMaxima=100;
+                VidaActual=100;
+                Ataque=25;
+                Evasion=25;
+                Defensa=30;
                 break;
             case 3:
-                raza=numRaza;
-                vidaMaxima=125;
-                vidaActual=125;
-                ataque=25;
-                evasion=0;
-                defensa=35;
+                Raza=numRaza;
+                VidaMaxima=125;
+                VidaActual=125;
+                Ataque=25;
+                Evasion=0;
+                Defensa=35;
                 break;
         }
 
@@ -68,7 +68,7 @@ public class Personajes
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("\nEstadisticas:");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("   Vida actual:"+vidaActual);
+        Console.WriteLine("   Vida actual:"+VidaActual);
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("   Ataque:"+Ataque);
         Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -96,7 +96,7 @@ public class Personajes
    
     public bool EstaVivo()// Si esta vivo retorna true
     {
-        if(vidaActual!=0)
+        if(VidaActual!=0)
         {
             return true;
         }else
@@ -107,18 +107,18 @@ public class Personajes
 
     public void PerderVida(int danioRecibido)
     {
-        if(danioRecibido>vidaActual)
+        if(danioRecibido>VidaActual)
         {
-            vidaActual=0;
+            VidaActual=0;
         }else
         {
-            vidaActual=vidaActual-danioRecibido;
+            VidaActual=VidaActual-danioRecibido;
         }
     }
     public void MostrarVida()
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("\nVida de "+Nombre+": "+vidaActual+"/"+vidaMaxima);
+        Console.WriteLine("\nVida de "+Nombre+": "+VidaActual+"/"+VidaMaxima);
 
     }
    
@@ -161,15 +161,15 @@ public class Personajes
     {
         if(Pociones!=0)
         {
-            if((vidaActual+(VidaMaxima/2))>vidaMaxima)
+            if((VidaActual+(VidaMaxima/2))>VidaMaxima)
             {
-                vidaActual=VidaMaxima;
+                VidaActual=VidaMaxima;
             }else
             {
-                vidaActual=vidaActual+(VidaMaxima/2);
+                VidaActual=VidaActual+(VidaMaxima/2);
             }
             
-            pociones--;
+            Pociones--;
             Console.ForegroundColor=ConsoleColor.DarkRed;
             Console.WriteLine("\n"+Nombre+" ha utilizado una pocion, quedan "+Pociones+" pociones");
         }else
@@ -181,15 +181,16 @@ public class Personajes
     }
     
 
-    public string Nombre { get => nombre; }
-    public float VidaActual { get => vidaActual;  }
-    public int Evasion { get => evasion; }
-    public int Defensa { get => defensa; }
-    public int Ataque { get => ataque; }
-    public int Pociones { get => pociones;  }
-    public int Raza { get => raza;  }
-    public float VidaMaxima { get => vidaMaxima;}
-    public bool Concentrado { get => concentrado; set => concentrado = value; }
+    public bool Concentrado { get => Concentrado1; set => Concentrado1 = value; }
+    public string Nombre { get => nombre; set => nombre = value; }
+    public float VidaActual { get => vidaActual; set => vidaActual = value; }
+    public float VidaMaxima { get => vidaMaxima; set => vidaMaxima = value; }
+    public int Ataque { get => ataque; set => ataque = value; }
+    public int Evasion { get => evasion; set => evasion = value; }
+    public int Defensa { get => defensa; set => defensa = value; }
+    public int Pociones { get => pociones; set => pociones = value; }
+    public int Raza { get => raza; set => raza = value; }
+    public bool Concentrado1 { get => concentrado1; set => concentrado1 = value; }
     // protected int Movimiento { get => movimiento; set => movimiento = value; }
     // protected int Oleada { get => oleada; set => oleada = value; }
 } 

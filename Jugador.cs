@@ -9,7 +9,11 @@ public class Jugador : Personajes
     private int oleada;
 
 
-    public Jugador(string NombreIngresado, int numRaza): base( NombreIngresado, numRaza){
+    public Jugador():base()
+    {
+        
+    }
+    public Jugador(string Nombre, int Raza): base( Nombre, Raza){
         oleada = 1;
     }
    
@@ -21,17 +25,17 @@ public class Jugador : Personajes
         switch(razaEnemiga)
         {
             case 1:
-                evasion+=10;
+                Evasion+=10;
                 Console.ForegroundColor=ConsoleColor.DarkBlue;
                 Console.WriteLine("La evasion de "+Nombre+" ha aumentado");
                 break;
             case 2:
-                ataque+=10;
+                Ataque+=10;
                 Console.ForegroundColor=ConsoleColor.Red;
                 Console.WriteLine("El ataque de "+Nombre+" ha aumentado");
                 break;
             case 3:
-                defensa+=5;
+                Defensa+=5;
                 Console.ForegroundColor=ConsoleColor.Gray;
                 Console.WriteLine("La defensa de "+Nombre+" ha aumentado");
                 break;
@@ -63,5 +67,5 @@ public class Jugador : Personajes
             return false;
         }
     }
-    public int Oleada { get => oleada; }
+    public int Oleada { get => oleada;set => oleada=value; }
 }
